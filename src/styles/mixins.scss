@@ -1,0 +1,72 @@
+@mixin text-overflow($line: 1) {
+  overflow: hidden;
+  @if $line == 1 {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  @else {
+    display: -webkit-box;
+    -webkit-line-clamp: $line;
+    -webkit-box-orient: vertical;
+  }
+}
+
+// 方向只能为一左一右， 应该对输入的postions进行判断，然后区分background-size
+@mixin inner-round-corner ($color, $radius, $positions...) {
+
+  @if length($positions) > 4 {
+    @error "$positions 最多只能为4个参数";
+  }
+
+  $map-position: (
+    top-left: top left,
+    top-right: top right,
+    bottom-left: bottom left,
+    bottom-right: bottom right
+  );
+
+  $radial-gradients: ();
+  // 50%的时候会多一条空白缝隙，原因不明
+  $background-width: 51%;
+  $background-height: 51%;
+
+  @each $pos in $positions {
+    @if not map-has-key($map-position, $pos) {
+      @error "$positions 必须为：#{map-keys($map-position)}";
+    }
+    $conf: map-get($map-position, $pos);
+    $radial-gradient: radial-gradient(circle at nth($conf, 1) nth($conf, 2),
+                      transparent $radius, $color 0) nth($conf, 1) nth($conf, 2);
+    $radial-gradients: append($radial-gradients, $radial-gradient, comma);
+  }
+
+  background-color: $color;
+  background: $radial-gradients;
+  background-size: 51% 100%;
+  background-repeat: no-repeat;
+}
+
+@mixin posCenter($x, $y) {
+  position: absolute;
+
+  $translateX: 0;
+  $translateY: 0;
+
+  @if $x {
+    left: 50%;
+    $translateX: -50%;
+  }
+  @if $y {
+    top: 50%;
+    $translateY: -50%;
+  }
+  transform: translate3d($translateX, $translateY, 0);
+}
+
+@mixin absolute($top, $right: $top, $bottom: $top, $left: $right) {
+  position: absolute;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- <title>ziubao</title> -->
+    <!-- <link rel="stylesheet" href="//at.alicdn.com/t/font_569705_5cvy5dnrz4j.css"> -->
+    <link rel="manifest" href="/static/manifest.json">
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- <script src="//cdn.jsdelivr.net/npm/eruda"></script>
+    <script>eruda.init();</script> -->
+    <!-- built files will be auto injected -->
+    <!-- <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.4.8&key=955ef018c985e6640b49ceb85d5cb4f9"></script> -->
+    <script type="text/javascript" src="cordova.js"></script>
+    <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?cc981d54fc7e1a9e95c7befff4f7460a";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+    <script>
+      window.onLoad  = function(){
+        var map = new AMap.Map('container');
+      }
+      var url = 'https://webapi.amap.com/maps?v=1.4.13&key=955ef018c985e6640b49ceb85d5cb4f9';
+      var jsapi = document.createElement('script');
+      jsapi.charset = 'utf-8';
+      jsapi.src = url;
+      document.head.appendChild(jsapi)
+    </script>
+  </body>
+</html>
