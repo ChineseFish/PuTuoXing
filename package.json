@@ -15,7 +15,7 @@
     "cordova": "cross-env NODE_ENV=production node build/build-cordova.js"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "better-scroll": "1.9.1",
     "cross-env": "^5.1.4",
     "fastclick": "^1.0.6",
